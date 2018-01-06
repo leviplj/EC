@@ -1,40 +1,62 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" >
 
-{% extends 'ecweb/base.html' %}
+<head>
+  <meta charset="UTF-8">
+  <title>English College</title>
 
-{% block content %}
-
-{% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
-
-{% if next %}
-    {% if user.is_authenticated %}
-    <p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
-    {% else %}
-    <p>Please login to see this page.</p>
-    {% endif %}
-{% endif %}
-
-<form method="post" action="{% url 'login' %}">
-{% csrf_token %}
-
-<div>
-  <td>{{ form.username.label_tag }}</td>
-  <td>{{ form.username }}</td>
-</div>
-<div>
-  <td>{{ form.password.label_tag }}</td>
-  <td>{{ form.password }}</td>
-</div>
-
-<div>
-  <input type="submit" value="login" />
-  <input type="hidden" name="next" value="{{ next }}" />
-</div>
-</form>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 
 
-<p><a href="{% url 'forget_password' %}">Lost password?</a></p>
+    <link rel="stylesheet" href="{% static '/css/login.css' %}"/>
 
-{% endblock %}
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="login">
+            <div class="login-errors">
+
+                    {% if form.errors %}
+                    <p>Your username and password didn't match. Please try again.</p>
+                    {% endif %}
+
+                    {% if next %}
+                        {% if user.is_authenticated %}
+                        <p>Your account doesn't have access to this page. To proceed,
+                        please login with an account that has access.</p>
+                        {% else %}
+                        <p>Please login to see this page.</p>
+                        {% endif %}
+                    {% endif %}
+            </div>
+            <h1 class="login-heading">
+            <strong>Welcome.</strong> Please login.</h1>
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <input type="text" name="{{ form.username.html_name }}" placeholder="{{ form.username.label }}" required="required" class="input-txt" autofocus/>
+                <input type="password" name="{{ form.password.html_name }}" placeholder="{{ form.password.label }}" required="required" class="input-txt" />
+                <input type="hidden" name="next" value="{{ next }}" />
+                <div class="login-footer">
+                    <a href="{% url 'forget_password' %}" class="lnk">
+                        <span class="icon icon--min">ಠ╭╮ಠ</span>
+                        I've forgotten something
+                    </a>
+                    <button type="submit" class="btn btn--right">Sign in  </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>
