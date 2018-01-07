@@ -127,19 +127,19 @@ class Class(models.Model):
         return "{}: {}".format(self.date, self.lesson[:30])
 
 
-class Test(models.Model):
-    classroom = models.ForeignKey(ClassRoom, on_delete=models.CASCADE)
-    date = models.DateField()
-    type = models.CharField(max_length=50, choices=test_choices)
+# class Test(models.Model):
+#     classroom = models.ForeignKey(ClassRoom, on_delete=models.CASCADE)
+#     date = models.DateField()
+#     type = models.CharField(max_length=50, choices=test_choices)
 
-    def __str__(self):
-        return "{}: {}".format(self.date, self.lesson[:30])
+#     def __str__(self):
+#         return "{}: {}".format(self.date, self.lesson[:30])
 
 
-class TestGrade(models.Model):
-    test_event = models.ForeignKey(Test, on_delete=models.CASCADE)
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    grade = models.FloatField()
+# class TestGrade(models.Model):
+#     test_event = models.ForeignKey(Test, on_delete=models.CASCADE)
+#     student = models.ForeignKey(Student, on_delete=models.CASCADE)
+#     grade = models.FloatField()
 
 
 class Event(models.Model):

@@ -1,5 +1,5 @@
 from django.conf.urls import include, url
-from django.urls import path
+from django.urls import path, re_path
 
 from . import views
 
@@ -35,4 +35,5 @@ urlpatterns = [
       views.class_view,
       name='class_view'
     ),
+    re_path(r'^tests/', include('EC.tests.urls', namespace='tests')),
 ]
