@@ -1,10 +1,9 @@
 from django.contrib import admin
-from django.db.models import ManyToManyField
 from django.forms import CheckboxSelectMultiple
 
-from .forms import CreateUserFormAdmin, UpdateUserFormAdmin
+from .forms import CreateUserForm, UpdateUserFormAdmin
 from .models import (ClassRoom, Teacher, Student, Coordinator,
-                     Youtube, PdfFile, Class, BasicUser)
+                     Youtube, PdfFile, Class, BasicUser, Event)
 
 
 class BasicUserAdmin(admin.ModelAdmin):
@@ -18,7 +17,7 @@ class BasicUserAdmin(admin.ModelAdmin):
         'date_joined',
     )
     list_filter = ('date_joined',)
-    add_form = CreateUserFormAdmin
+    add_form = CreateUserForm
     form = UpdateUserFormAdmin
 
     def get_form(self, request, obj=None, **kwargs):
@@ -67,7 +66,11 @@ class TeacherAdmin(admin.ModelAdmin):
 class CoordinatorAdmin(admin.ModelAdmin):
     pass
 
+class EventAdmin(admin.ModelAdmin):
+    pass
 
+
+admin.site.register(Event, EventAdmin)
 admin.site.register(BasicUser, BasicUserAdmin)
 admin.site.register(ClassRoom, ClassRoomAdmin)
 admin.site.register(Teacher, TeacherAdmin)

@@ -75,6 +75,13 @@ $ python manage.py test
 $ python manage.py runserver
 ```
 
+### Access to django-admin
+
+login: admin@admin.com
+
+password: admin123
+
+
 ### Warm up development's environment by docker compose
 ```sh
 sudo curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
@@ -108,10 +115,7 @@ sudo docker exec -it <container's id> /bin/bash
 sudo docker logs -f --tail=100 <container's id>
 ```
 
-### Access admin
 
-login: admin@admin.com
-password: admin123
 
 ## Authors
 
