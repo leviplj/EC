@@ -43,7 +43,7 @@ class SubscriptionsNewPostValid(TestCase):
 
         self.resp = self.client.post(r('tests:new', cr.slug), data)
 
-    def test_post(self):        
+    def test_post(self):
         self.assertEqual(302, self.resp.status_code)
         self.assertRedirects(self.resp, r('tests:list'))
 
