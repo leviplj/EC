@@ -79,6 +79,16 @@
           Not found.
         {% endif %}
       </ul>
+      <ul>
+        <h2>Tests <a href="{% url 'tests:new' classroom=object.slug %}">New Test</a></h2>
+        {% if object.test_set.all %}
+          {% for test in object.test_set.all %}
+            <li><a href="#">{{test}}</a></li>
+          {% endfor %}
+        {% else %}
+          Not found.
+        {% endif %}
+      </ul>
     </div>
 </div>
 {% endblock %}
