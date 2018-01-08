@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date
 from django.core.exceptions import ValidationError
 from django.test.testcases import TestCase
 
@@ -27,7 +27,7 @@ class TestModelTest(TestCase):
 
         self.obj = Test.objects.create(
             classroom=self.cr,
-            date=datetime(2018, 1, 7, 9, 0, 0),
+            date=date(2018, 1, 7),
             type=Test.LISTENING,
         )
         self.obj.attendances.add(s1)
@@ -37,14 +37,14 @@ class TestModelTest(TestCase):
         self.assertTrue(Test.objects.exists())
 
     def test_str(self):
-        obj_str = f'{Test.LISTENING}: 2018-01-07 09:00:00'
+        obj_str = f'2018-01-07: {Test.LISTENING}'
         self.assertEqual(obj_str, str(self.obj))
 
     def test_choices(self):
         """Test type should be limited to listening or reading"""
         test = Test(
             classroom=self.cr,
-            date=datetime(2018, 1, 7, 9, 0, 0),
+            date=date(2018, 1, 7),
             type='writing'
         )
 

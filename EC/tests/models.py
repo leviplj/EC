@@ -18,4 +18,4 @@ class Test(models.Model):
     attendances = models.ManyToManyField(Student, blank=True)
 
     def __str__(self):
-        return "{}: {}".format(self.type, self.date)
+        return "{}: {}".format(self.date, self.type)

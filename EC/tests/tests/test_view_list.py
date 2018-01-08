@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date
 from django.shortcuts import resolve_url as r
 from django.test import TestCase
 
@@ -6,13 +6,13 @@ from EC.tests.models import Test
 from ecweb.models import ClassRoom
 
 
-class TalkListGet(TestCase):
+class TestListGet(TestCase):
     def setUp(self):
         self.cr = ClassRoom.objects.create(number_class=1, level='Beginner', turn='morning',)
 
         self.obj = Test.objects.create(
             classroom=self.cr,
-            date=datetime(2018, 1, 7, 9, 0, 0),
+            date=date(2018, 1, 7),
             type=Test.LISTENING,
         )
 
