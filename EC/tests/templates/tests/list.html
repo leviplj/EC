@@ -8,19 +8,12 @@
 {% block content %}
 <div class="content-wrapper">
     <h4 class="text-primary mb-3">All Tests</h4>    
-    {% for test in tests %}
-        {{ test.classroom }}<br />
-        {{ test }}<br />
-    {% endfor %}
-
-    <br>
-    __________________________________
-    <br>
+   
     <br>
     {% for classroom in classrooms %}
         {{classroom}}<br>
         {% for test in classroom.test_set.all %}
-            {{ test }}<br>
+           <a href="{% url 'tests:detail' id=test.id %}"> {{ test }}</a><br>
         {% endfor %}
 
     {% endfor %}

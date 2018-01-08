@@ -1,0 +1,41 @@
+{% extends 'ecweb/baseadmin.html' %}
+{% load staticfiles %}
+
+{% block head %} {% endblock %}
+
+{% block js %} {% endblock %}
+
+{% block content %}
+<div class="content-wrapper">
+    <h4 class="text-primary mb-3">{{ test.classroom }}</h4>
+    
+    <h4>{{ test }}</h4>
+    
+
+    <table class="table">
+        <thead>
+          <h5>Students</h5>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for student in test.attendances.all %}
+              <tr>
+                <td>
+                  {{student.user.first_name}}
+                </td>
+                <td>
+                  {{student.user.last_name}}
+                </td>
+                <td>
+                  {{student.user}}
+                </td>
+              </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+</div>
+{% endblock %}

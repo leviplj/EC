@@ -42,3 +42,7 @@ def empty_form(request, classroom):
     form.fields['attendances'].choices = tuple(student_choices)
     
     return render(request, 'tests/test_form.html', {'form': form, 'classroom': classroom})
+
+def detail(request, id):
+    test = Test.objects.get(pk=id)
+    return render(request, 'tests/detail.html', {'test': test})
