@@ -12,13 +12,23 @@
     <form action="{% url 'tests:new' classroom=classroom %}" method="POST">
         {% csrf_token %}
 
-        {% for field in form %}
-            {{ field.label_tag }}
-            {{ field }}
-            {{ field.errors }}
-            <br>
-        {% endfor %}
-        
+        <div>
+            <span><label for="{{ form.classroom.id_for_label }}">{{ form.classroom.label }}</label></span>
+            {{ form.classroom }}        
+        </div>
+        <div>
+            <span><label for="{{ form.date.id_for_label }}">{{ form.date.label }}</label></span>
+            <input type="date" name="{{ form.date.name }}" id="{{ form.date.id_for_label }}">
+        </div>
+        <div>
+            <span><label for="{{ form.type.id_for_label }}">{{ form.type.label }}</label></span>
+        {{ form.type }}
+        </div>
+        <div>
+            <span>{{ form.attendances.label }}</span>
+            {{ form.attendances }}
+        </div>
+
         <button type="submit" class="btn btn-primary mr-2">Salvar</button>
     </form>
     

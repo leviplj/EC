@@ -11,6 +11,10 @@ def test_list(request):
     classrooms = ClassRoom.objects.all()
     return render(request, 'tests/list.html', {'tests': tests, 'classrooms': classrooms})
 
+def classroom_list(request):
+    classrooms = ClassRoom.objects.all()
+    return render(request, 'tests/classroom_list.html', {'classrooms': classrooms})
+
 def new(request, classroom):
     if request.method == 'POST':
         return create(request, classroom)
@@ -38,7 +42,7 @@ def empty_form(request, classroom):
         student_choices.append((student_id, student_name))
     
     form = TestForm(initial={'classroom': cr})
-    form.fields['classroom'].widget.attrs['disabled'] = True
+    # form.fields['classroom'].widget.attrs['disabled'] = True
     form.fields['attendances'].choices = tuple(student_choices)
     
     return render(request, 'tests/test_form.html', {'form': form, 'classroom': classroom})
